@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <!-- <div id="app1">
+        {{msg}}
+        <input type="button" value="更新" onclick="change()">
+        <input type="button" value="销毁" onclick="destroy()">
+    </div>。
+    <script>
+        let vm1 = new Vue({
+            el:"#app1",
+            data:{
+                msg:"你是一个傻瓜"
+            },
+            beforeCreat(){
+                alert("创建前");
+            },
+            created(){
+                alert("创建完成");
+            },
+            beforeMount(){
+                alert("挂载前");
+            },
+            mounted(){
+                alert("挂载完成");
+            },
+            beforeUpdate(){
+                alert("更新前");
+            },
+            update(){
+                alert("更新完成");
+            },
+            beforeDestroy(){
+                alert("销毁前");
+            },
+            destroy(){
+                alert("销毁完成");
+            }
+        })
+        function change(){
+            vm1.msg = "你像一个傻瓜"
+        }
+        function destroy(){
+            vm1.$destroy()
+        }
+    </script> -->
+    <!-- 2 -->
+    <!-- <div id="app2">
+        
+    </div>
+    <script>
+        let vm2 = new Vue({
+            el:"#app2",
+            data:{},
+            render(creatElement){
+                return creatElement("ul",{
+                    class:{"ul":true},
+                    style:{
+                        fontSize:"24px"
+                    }
+                },[
+                    creatElement("li","戏"),
+                    creatElement("li","戏"),
+                    creatElement("li","戏"),
+                ])
+            }
+        })
+    </script> -->
+    <!-- 3 -->
+    <!-- <div id="app3">
+        <span class="ospan" :class="{sun:name}">你是一个傻瓜</span>
+    </div>
+    <script>
+        let vm3 = new Vue({
+            el: "#app3",
+            data: {
+                name: true
+            }
+        })
+    </script> -->
+    <!-- 4 -->
+    
+</body>
+
+</html>

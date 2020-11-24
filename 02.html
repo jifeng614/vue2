@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div {
+            width: 200px;
+            height: 200px;
+            background-color: #f33;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
+        .box {
+            width: 400px;
+            height: 200px;
+            font-size: 28px;
+            background-color: red;
+            font-weight: bold;
+            font-style: italic;
+            color: white;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        .item {
+            background-color: green;
+        }
+    </style>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="bb">
+        <div v-text="news"></div>
+        <div v-html="news"></div>
+    </div>
+    <script>
+        let mv = new Vue({
+            el: "#bb",
+            data: {
+                news: '<h1><font>jint</font></h1>'
+            }
+        })
+    </script>
+    <div id="cc">
+        <div v-show="isSeen">
+            <h1>{{newsp}}</h1>
+        </div>
+    </div>
+    <script>
+        let mn = new Vue({
+            el: "#cc",
+            data: {
+                newsp: 'zhouer',
+                isSeen: true
+            }
+        })
+    </script>
+    <div id="dd">
+        <button v-on:click="change">dianji</button>
+        <div class="div" v-show="isShow"></div>
+    </div>
+    <script>
+        let mb = new Vue({
+            el: "#dd",
+            data: {
+                isShow: true,
+                newsone: "TT语言"
+            },
+            methods: {
+                change() {
+                    console.log(this);
+                    this.isShow = !this.isShow;
+                }
+            }
+        })
+    </script>
+    <div id="aa" v-pre>
+        {{news}}
+    </div>
+    <script>
+        let vm = new Vue({
+            el: "#aa",
+            data: {
+                news: 'zhouer'
+            }
+        })
+    </script>
+    <div id="app5">
+        <hello></hello>
+    </div>
+    <script type="x-template" id="box">
+        <div>
+            <slot></slot>
+            <h1 @click="change">{{title}}</h1>
+            <ul>
+                <li v-for="(shi,index) in pome" :key="index">{{shi}}</li>
+            </ul>
+        </div>
+    </script>
+    <script>
+        let vm7 = new Vue({
+            el:"#app5",
+            data:{
+                news:"1",
+                msg:"2"
+            },
+            components:{
+                "hello":{
+                    template:"#box",
+                    data(){
+                        return {
+                            title:"hello",
+                            pome:[1,2,3,4]
+                        }
+                    },
+                    methods:{
+                        change(){
+                            this.title = "你好"
+                        }
+                    }
+                },
+                
+            }
+        })
+    </script>
+    <!-- <div id="app5">
+        <hello></hello>
+    </div>
+    <script type="x-template" id="box">
+        <div>
+            <slot></slot>
+            <h1 @click="change">{{title}}</h1>
+            <ul>
+                <li v-for="(shi,index) in pome" :key="index">{{shi}}</li>
+            </ul>
+        </div>
+    </script>
+    <script>
+        let vm7 = new Vue({
+            el:"#app5",
+            data:{
+                news:"1",
+                msg:"2"
+            },
+            components:{
+                "hello":{
+                    template:"#box",
+                    data(){
+                        return {
+                            title:"hello",
+                            pome:[1,2,3,4]
+                        }
+                    },
+                    methods:{
+                        change(){
+                            this.title = "你好"
+                        }
+                    }
+                },
+                
+            }
+        })
+    </script>
+    <div id="app5">
+        <hello></hello>
+    </div>
+    <script type="x-template" id="box">
+        <div>
+            <slot></slot>
+            <h1 @click="change">{{title}}</h1>
+            <ul>
+                <li v-for="(shi,index) in pome" :key="index">{{shi}}</li>
+            </ul>
+        </div>
+    </script>
+    <script>
+        let vm7 = new Vue({
+            el:"#app5",
+            data:{
+                news:"1",
+                msg:"2"
+            },
+            components:{
+                "hello":{
+                    template:"#box",
+                    data(){
+                        return {
+                            title:"hello",
+                            pome:[1,2,3,4]
+                        }
+                    },
+                    methods:{
+                        change(){
+                            this.title = "你好"
+                        }
+                    }
+                },
+                
+            }
+        })
+    </script> -->
+    <div id="app">
+        <web>
+            <div slot="one">1</div>
+            <div slot="two">2</div>
+            <div slot="three">3</div>
+        </web>
+    </div>
+    <template id="box">
+        <div>
+            <span>开始</span>
+            <slot name="two">1</slot>
+            <slot name="one">2</slot>
+            <slot name="three">3</slot>
+            <span>结束</span>
+        </div>
+    </template>
+    <script type="text/javascript">
+        Vue.component("web", {
+            template: "#box"
+        })
+        new Vue({
+            el: "#app",
+        })
+    </script>
+    <!-- <div id="app">
+        <web>
+            <div slot="one">1</div>
+            <div slot="two">2</div>
+            <div slot="three">3</div>
+        </web>
+    </div>
+    <template id="box">
+        <div>
+            <span>开始位置</span>
+            <slot name="two">1</slot>
+            <slot name="one">2</slot>
+            <slot name="three">3</slot>
+            <span>结束位置</span>
+        </div>
+    </template>
+    <script type="text/javascript">
+        Vue.component("web", {
+            template: "#box"
+        })
+        new Vue({
+            el: "#app",
+        })
+    </script> -->
+    <!-- <div id="app">
+        <web>
+            <div slot="one">1</div>
+            <div slot="two">2</div>
+            <div slot="three">3</div>
+        </web>
+    </div>
+    <template id="box">
+        <div>
+            <span>开始位置</span>
+            <slot name="two">1</slot>
+            <slot name="one">2</slot>
+            <slot name="three">3</slot>
+            <span>结束位置</span>
+        </div>
+    </template>
+    <script type="text/javascript">
+        Vue.component("web", {
+            template: "#box"
+        })
+        new Vue({
+            el: "#app",
+        })
+    </script> -->
+    <!-- 15 -->
+    <div id="app2">
+        <input type="button" value="hello组件" @click="title='hello'" />
+        <input type="button" value="world组件" @click="title='world'" />
+        <keep-alive>
+            <component :is="title"></component>
+        </keep-alive>
+    </div>
+    <template id="aa1">
+        <div>
+            <div class="box">组件1</div>
+        </div>
+    </template>
+    <template id="bb1">
+        <div>
+            <div class="box item">组件2</div>
+        </div>
+    </template>
+    <script type="text/javascript">
+        let vm3 = new Vue({
+            el: "#app2",
+            data: {
+                title: 'hello'
+            },
+            components: {
+                'hello': {
+                    template: "#aa1"
+                },
+                'world': {
+                    template: "#bb1"
+                }
+            }
+
+        })
+    </script>
+    <!-- <div id="app">
+        <input type="button" value="hello组件" @click="title='hello'" />
+        <input type="button" value="world组件" @click="title='world'" />
+        <keep-alive>
+            <component :is="title"></component>
+        </keep-alive>
+    </div>
+    <template id="aa">
+        <div>
+            <div class="box">组件1</div>
+        </div>
+    </template>
+    <template id="bb">
+        <div>
+            <div class="box item">组件2</div>
+        </div>
+    </template>
+    <script type="text/javascript">
+        let vm4 = new Vue({
+            el: "#app",
+            data: {
+                title: 'hello'
+            },
+            components: {
+                'hello': {
+                    template: "#aa"
+                },
+                'world': {
+                    template: "#bb"
+                }
+            }
+
+        })
+    </script> -->
+    <!-- <div id="app">
+        <input type="button" value="hello组件" @click="title='hello'" />
+        <input type="button" value="world组件" @click="title='world'" />
+        <keep-alive>
+            <component :is="title"></component>
+        </keep-alive>
+    </div>
+    <template id="aa">
+        <div>
+            <div class="box">组件1</div>
+        </div>
+    </template>
+    <template id="bb">
+        <div>
+            <div class="box item">组件2</div>
+        </div>
+    </template>
+    <script type="text/javascript">
+        let vm5 = new Vue({
+            el: "#app",
+            data: {
+                title: 'hello'
+            },
+            components: {
+                'hello': {
+                    template: "#aa"
+                },
+                'world': {
+                    template: "#bb"
+                }
+            }
+
+        })
+    </script> -->
+    <script>
+        /*
+            v-for 的优先级比 v-if 更高
+            插槽的作用：占位，在模板中使用
+            
+        */
+    </script>
+    
+</body>
+
+</html>
